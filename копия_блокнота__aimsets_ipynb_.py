@@ -39,21 +39,7 @@ chr1.show()
 
 table = hl.import_table('annotation_noAMR.txt', impute=True).key_by('sample')
 
-table.describe()
-
-table.show()
-
 chr1 = chr1.annotate_cols(pheno = table[chr1.s])
-
-chr1.show()
-
-chr1.col.describe()
-
-pprint(table.aggregate(hl.agg.counter(table.super_pop)))
-
-chr1.aggregate_cols(hl.agg.counter(chr1.pheno.super_pop))
-
-table.describe()
 
 chr1 = hl.variant_qc(chr1)
 
